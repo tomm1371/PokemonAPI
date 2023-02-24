@@ -34,22 +34,8 @@
       Pokemon API App
     </header>
     <main>
-      <div id="pokemon-list"></div>
-      <script>
-        const apiUrl = 'https://your-api-url.com/pokemon';
-        const pokemonListElement = document.getElementById('pokemon-list');
+      <fetchdata></fetchdata>
       
-        fetch(apiUrl)
-          .then(response => response.json())
-          .then(data => {
-            const pokemonList = data.results.map(pokemon => `<li>${pokemon.name}</li>`);
-            pokemonListElement.innerHTML = `<ul>${pokemonList.join('')}</ul>`;
-          })
-          .catch(error => {
-            console.error('Error fetching data from API:', error);
-            pokemonListElement.innerHTML = '<p>Error fetching data from API</p>';
-          });
-      </script>
       
       <!-- Put your main content here -->
       Pokemons here :D
