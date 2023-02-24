@@ -29,10 +29,6 @@ import {PokemonAPI} from "./api";
     private handleError(error: any) {
         console.error('An error occurred:', error);
         return throwError('Something went wrong. Please try again later.');
-      }
-       
-        
-      
-      
+      }     
     }
   
