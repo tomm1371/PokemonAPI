@@ -13,7 +13,7 @@ import {PokemonAPI} from "./api";
   
   
     getPokemon(): Observable<PokemonAPI> {
-        const max = 151;
+        const max = 1001;
         const min = 1;
         const id = Math.floor(Math.random() * (max - min + 1)) + min;       
         const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
@@ -22,9 +22,6 @@ import {PokemonAPI} from "./api";
         tap(data => console.log('all;', JSON.stringify(data))), 
         catchError(this.handleError)
         );
-    
-  
-  
     }
     private handleError(error: any) {
         console.error('An error occurred:', error);

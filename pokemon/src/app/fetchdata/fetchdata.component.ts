@@ -11,7 +11,38 @@ import { MyServiceService } from "./fetchdata.service";
 
 export class FetchdataComponent implements OnDestroy, OnInit{
 
-    pokemons!: PokemonAPI;
+    pokemons: PokemonAPI = { 
+        name: '',
+        id: 0,
+        weight: 0,
+        height: 0,
+        sprites: { front_default: '' },
+        stats: [
+          { base_stat: 0 },
+          { base_stat: 0 },
+          { base_stat: 0 },
+          { base_stat: 0 },
+          { base_stat: 0 },
+          { base_stat: 0 }
+        ]
+      };
+
+      wildPokemons: PokemonAPI = { 
+        name: '',
+        id: 0,
+        weight: 0,
+        height: 0,
+        sprites: { front_default: '' },
+        stats: [
+          { base_stat: 0 },
+          { base_stat: 0 },
+          { base_stat: 0 },
+          { base_stat: 0 },
+          { base_stat: 0 },
+          { base_stat: 0 }
+        ]
+      };
+      
     error: string = ""
     sub: Subscription | undefined
 
@@ -19,14 +50,18 @@ export class FetchdataComponent implements OnDestroy, OnInit{
 
     ngOnInit(): void {
         this.sub = this.Fetchdata.getPokemon().subscribe({
-            next: x => this.pokemons = x, 
-            error: err => this.error = err
-        })
+          next: x => this.wildPokemons = x, 
+          error: err => this.error = err
+        });
+      }
 
-        
-    }
     ngOnDestroy(): void {
         this.sub?.unsubscribe();
     }
-
+    updatePokemon() {
+        this.sub = this.Fetchdata.getPokemon().subscribe({
+          next: x => this.wildPokemons = x, 
+          error: err => this.error = err
+        });
+    }
 }
