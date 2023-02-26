@@ -50,7 +50,7 @@ export class FetchdataComponent implements OnDestroy, OnInit{
 
     ngOnInit(): void {
         this.sub = this.Fetchdata.getPokemon().subscribe({
-          next: x => this.wildPokemons = x, 
+          next: x => this.pokemons = x, 
           error: err => this.error = err
         });
       }
